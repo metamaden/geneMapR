@@ -12,3 +12,10 @@ The genome build (and affiliate patch number) corresponds to a designation like 
 
 # Programmic Mapping
 TBD (to discuss programmatic strategies for gene mapping)
+
+# Citations (package list)
+org.Hs.eg.db
+BSgenome.Hsapiens.UCSC.hg19
+TxDb.Hsapiens.UCSC.hg19.knownGene
+AnnotationDbi
+EnsDb.Hsapiens.v75
