@@ -1,4 +1,4 @@
-# geneMappR
+# geneMapR
 Repo containing info and workhorse scripts to aid gene ID mapping and coordinate retrieval.
 
 # Mapping a Gene
