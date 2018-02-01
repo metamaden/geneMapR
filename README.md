@@ -8,7 +8,7 @@ Sequence -> Codon -> Transcript -> Isoform -> Isoform Cluster -> Gene Coordinate
 Gene identifiers correspond to any number of different molecular data types, including different types of transcripts.
 
 # Genome Builds
-The genome build (and affiliate patch number) corresponds to a designation like "hg##" ([UCSC genome build](https://genome.ucsc.edu/FAQ/FAQreleases.html)) or "GRCh##" (Genome Assembly from the NCBI [Genome Reference Consortium](https://www.ncbi.nlm.nih.gov/grc)). Genomes can be stored a a scaffold sequence, [annotated](https://www.ncbi.nlm.nih.gov/genome/annotation_euk/process/) database, or some combination of the two.
+The genome build (and affiliate patch number) corresponds to a designation like "hg##" ([UCSC genome build](https://genome.ucsc.edu/FAQ/FAQreleases.html)) or "GRCh##" (Genome Assembly from the NCBI [Genome Reference Consortium](https://www.ncbi.nlm.nih.gov/grc)). Genomes can be stored as a scaffold sequence, [annotated](https://www.ncbi.nlm.nih.gov/genome/annotation_euk/process/) database, or some combination of the two.
 
 # Programmic Mapping: R
 Using R/Bioconductor, id mappings can readily be generated from org.Hs.eg.db package, using the select() interface inherited from AnnotationDbi package (see [org.Hs.rg.db](https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html) and [Annotation tutorial](https://www.bioconductor.org/help/workflows/annotation/annotation/) Bioconductor pages for more details).
