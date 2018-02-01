@@ -26,7 +26,7 @@ columns(org.Hs.eg.db)
 
 symbols <- c("ERBB2","TP53")
 head(select(org.Hs.eg.db, symbols, c("ENTREZID","GENENAME","REFSEQ"), "ALIAS"))
-ALIAS ENTREZID                          GENENAME       REFSEQ
+#  ALIAS ENTREZID                          GENENAME       REFSEQ
 #1 ERBB2     2064 erb-b2 receptor tyrosine kinase 2 NM_001005862
 #2 ERBB2     2064 erb-b2 receptor tyrosine kinase 2 NM_001289936
 #3 ERBB2     2064 erb-b2 receptor tyrosine kinase 2 NM_001289937
