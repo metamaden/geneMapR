@@ -73,9 +73,8 @@ head(select(edb, keys=genex, columns=c("TXID", "TXSEQSTART", "TXBIOTYPE","SEQNAM
 # 4   TP53 ENST00000510385    7571720 retained_intron      17      7565097    7590856
 # 5   TP53 ENST00000504937    7571720 retained_intron      17      7565097    7590856
 # 6   TP53 ENST00000269305    7571720  protein_coding      17      7565097    7590856
-
-
 ```
+NOTE: gene coordinates are not uncontroversial. Even controlling for genome build, different databases can yield varying exact coordinate ranges. These should, however, cluster predictably and according to annotated transcripts and possible variation in transcript annotations, database updates, curation practices, etc. Thus it often pays to check multiple resources. See helpful links below for some options.
 
 # Citations (package list)
 org.Hs.eg.db
@@ -87,5 +86,7 @@ EnsDb.Hsapiens.v75
 ## helpful links
 https://bioconductor.org/packages/3.7/bioc/vignettes/AnnotationDbi/inst/doc/IntroToAnnotationPackages.pdf
 https://www.bioconductor.org/help/course-materials/2010/EMBL2010/GenomicRanges.pdf
+https://genome.ucsc.edu/
+http://www.genecards.org/
 
 #
