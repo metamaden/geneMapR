@@ -170,17 +170,17 @@ transcripts(edb) # returns large Granges object
 ```
 
 # Citations (package list)
-org.Hs.eg.db
-BSgenome.Hsapiens.UCSC.hg19
-TxDb.Hsapiens.UCSC.hg19.knownGene
-AnnotationDbi
+org.Hs.eg.db  
+BSgenome.Hsapiens.UCSC.hg19  
+TxDb.Hsapiens.UCSC.hg19.knownGene  
+AnnotationDbi  
 EnsDb.Hsapiens.v75
 
 ## helpful links
-https://bioconductor.org/packages/3.7/bioc/vignettes/AnnotationDbi/inst/doc/IntroToAnnotationPackages.pdf
-https://www.bioconductor.org/help/course-materials/2010/EMBL2010/GenomicRanges.pdf
-https://bioconductor.org/packages/3.7/bioc/vignettes/GenomicFeatures/inst/doc/GenomicFeatures.pdf
-https://genome.ucsc.edu/
-http://www.genecards.org/
-
+https://bioconductor.org/packages/3.7/bioc/vignettes/AnnotationDbi/inst/doc/IntroToAnnotationPackages.pdf  
+https://www.bioconductor.org/help/course-materials/2010/EMBL2010/GenomicRanges.pdf  
+https://bioconductor.org/packages/3.7/bioc/vignettes/GenomicFeatures/inst/doc/GenomicFeatures.pdf  
+https://genome.ucsc.edu/  
+http://www.genecards.org/  
+ 
 #
