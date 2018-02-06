@@ -65,16 +65,109 @@ columns(edb)
 # [31] "UNIPROTDB"           "UNIPROTID"           "UNIPROTMAPPINGTYPE" 
 
 genex <- "TP53"
-head(select(edb, keys=genex, columns=c("TXID", "TXSEQSTART", "TXBIOTYPE","SEQNAME","GENESEQSTART","GENESEQEND"),keytype="SYMBOL"))
-#   SYMBOL            TXID TXSEQSTART       TXBIOTYPE SEQNAME GENESEQSTART GENESEQEND
-# 1   TP53 ENST00000413465    7565097  protein_coding      17      7565097    7590856
-# 2   TP53 ENST00000359597    7569404  protein_coding      17      7565097    7590856
-# 3   TP53 ENST00000504290    7571720 retained_intron      17      7565097    7590856
-# 4   TP53 ENST00000510385    7571720 retained_intron      17      7565097    7590856
-# 5   TP53 ENST00000504937    7571720 retained_intron      17      7565097    7590856
-# 6   TP53 ENST00000269305    7571720  protein_coding      17      7565097    7590856
+select(edb, keys=genex, columns=c("TXID", "TXSEQSTART", "TXBIOTYPE","SEQNAME","GENESEQSTART","GENESEQEND"),keytype="SYMBOL")
+#SYMBOL            TXID TXSEQSTART            TXBIOTYPE SEQNAME GENESEQSTART GENESEQEND
+#1    TP53 ENST00000413465    7565097       protein_coding      17      7565097    7590856
+#2    TP53 ENST00000359597    7569404       protein_coding      17      7565097    7590856
+#3    TP53 ENST00000504290    7571720      retained_intron      17      7565097    7590856
+#4    TP53 ENST00000510385    7571720      retained_intron      17      7565097    7590856
+#5    TP53 ENST00000504937    7571720      retained_intron      17      7565097    7590856
+#6    TP53 ENST00000269305    7571720       protein_coding      17      7565097    7590856
+#7    TP53 ENST00000455263    7571722       protein_coding      17      7565097    7590856
+#8    TP53 ENST00000420246    7571722       protein_coding      17      7565097    7590856
+#9    TP53 ENST00000445888    7571739       protein_coding      17      7565097    7590856
+#10   TP53 ENST00000576024    7572887       protein_coding      17      7565097    7590856
+#11   TP53 ENST00000509690    7576853       protein_coding      17      7565097    7590856
+#12   TP53 ENST00000514944    7577535       protein_coding      17      7565097    7590856
+#13   TP53 ENST00000574684    7577572 processed_transcript      17      7565097    7590856
+#14   TP53 ENST00000505014    7577844      retained_intron      17      7565097    7590856
+#15   TP53 ENST00000508793    7578434       protein_coding      17      7565097    7590856
+#16   TP53 ENST00000604348    7578480       protein_coding      17      7565097    7590856
+#17   TP53 ENST00000503591    7578547       protein_coding      17      7565097    7590856
+
 ```
 NOTE: gene coordinates are not uncontroversial. Even controlling for genome build, different databases can yield varying exact coordinate ranges. These should, however, cluster predictably and according to annotated transcripts and possible variation in transcript annotations, database updates, curation practices, etc. Thus it often pays to check multiple resources. See helpful links below for some options.
+
+To explore this topic a bit more, we can explore the discrepancy between the transcript ranges and gene sequence ranges with a few examples.
+
+```
+library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
+
+genes(txdb) # returns large GRanges object
+#GRanges object with 23056 ranges and 1 metadata column:
+#        seqnames                 ranges strand |     gene_id
+#           <Rle>              <IRanges>  <Rle> | <character>
+#      1    chr19 [ 58858172,  58874214]      - |           1
+#     10     chr8 [ 18248755,  18258723]      + |          10
+#    100    chr20 [ 43248163,  43280376]      - |         100
+#   1000    chr18 [ 25530930,  25757445]      - |        1000
+#  10000     chr1 [243651535, 244006886]      - |       10000
+#    ...      ...                    ...    ... .         ...
+#   9991     chr9 [114979995, 115095944]      - |        9991
+#   9992    chr21 [ 35736323,  35743440]      + |        9992
+#   9993    chr22 [ 19023795,  19109967]      - |        9993
+#   9994     chr6 [ 90539619,  90584155]      + |        9994
+#   9997    chr22 [ 50961997,  50964905]      - |        9997
+#  -------
+#  seqinfo: 93 sequences (1 circular) from hg19 genome
+
+
+transcriptsBy(txdb) # returns list of genes organized as granges objects listing transcripts
+#GRangesList object of length 23459:
+#$1 
+#GRanges object with 2 ranges and 2 metadata columns:
+#      seqnames               ranges strand |     tx_id     tx_name
+#         <Rle>            <IRanges>  <Rle> | <integer> <character>
+#  [1]    chr19 [58858172, 58864865]      - |     70455  uc002qsd.4
+#  [2]    chr19 [58859832, 58874214]      - |     70456  uc002qsf.2
+#
+#$10 
+#GRanges object with 1 range and 2 metadata columns:
+#      seqnames               ranges strand | tx_id    tx_name
+#  [1]     chr8 [18248755, 18258723]      + | 31944 uc003wyw.1
+#
+#$100 
+#GRanges object with 1 range and 2 metadata columns:
+#      seqnames               ranges strand | tx_id    tx_name
+#  [1]    chr20 [43248163, 43280376]      - | 72132 uc002xmj.3
+#
+#...
+#<23456 more elements>
+#-------
+#seqinfo: 93 sequences (1 circular) from hg19 genome
+
+transcriptsBy(txdb)[["1"]] # returns the first granges object in the GRangeslist
+#GRanges object with 2 ranges and 2 metadata columns:
+#      seqnames               ranges strand |     tx_id     tx_name
+#         <Rle>            <IRanges>  <Rle> | <integer> <character>
+#  [1]    chr19 [58858172, 58864865]      - |     70455  uc002qsd.4
+#  [2]    chr19 [58859832, 58874214]      - |     70456  uc002qsf.2
+#  -------
+#  seqinfo: 93 sequences (1 circular) from hg19 genome
+
+transcripts(edb) # returns large Granges object
+#GRanges object with 215647 ranges and 6 metadata columns:
+#                  seqnames               ranges strand |           tx_id                         tx_biotype tx_cds_seq_start tx_cds_seq_end         gene_id         tx_name
+                     <Rle>            <IRanges>  <Rle> |     <character>                        <character>        <integer>      <integer>     <character>     <character>
+  #ENST00000456328        1       [11869, 14409]      + | ENST00000456328               processed_transcript             <NA>           <NA> ENSG00000223972 ENST00000456328
+  #ENST00000515242        1       [11872, 14412]      + | ENST00000515242 transcribed_unprocessed_pseudogene             <NA>           <NA> ENSG00000223972 ENST00000515242
+  #ENST00000518655        1       [11874, 14409]      + | ENST00000518655 transcribed_unprocessed_pseudogene             <NA>           <NA> ENSG00000223972 ENST00000518655
+  #ENST00000450305        1       [12010, 13670]      + | ENST00000450305 transcribed_unprocessed_pseudogene             <NA>           <NA> ENSG00000223972 ENST00000450305
+  #ENST00000438504        1       [14363, 29370]      - | ENST00000438504             unprocessed_pseudogene             <NA>           <NA> ENSG00000227232 ENST00000438504
+   #           ...      ...                  ...    ... .             ...                                ...              ...            ...             ...             ...
+  #ENST00000420810        Y [28695572, 28695890]      + | ENST00000420810               processed_pseudogene             <NA>           <NA> ENSG00000224240 ENST00000420810
+  #ENST00000456738        Y [28732789, 28737748]      - | ENST00000456738             unprocessed_pseudogene             <NA>           <NA> ENSG00000227629 ENST00000456738
+  #ENST00000435945        Y [28740998, 28780799]      - | ENST00000435945             unprocessed_pseudogene             <NA>           <NA> ENSG00000237917 ENST00000435945
+  #ENST00000435741        Y [28772667, 28773306]      - | ENST00000435741               processed_pseudogene             <NA>           <NA> ENSG00000231514 ENST00000435741
+  #ENST00000431853        Y [59001391, 59001635]      + | ENST00000431853               processed_pseudogene             <NA>           <NA> ENSG00000235857 ENST00000431853
+  #-------
+  #seqinfo: 273 sequences from GRCh37 genome
+
+
+
+
+```
 
 # Citations (package list)
 org.Hs.eg.db
@@ -86,6 +179,7 @@ EnsDb.Hsapiens.v75
 ## helpful links
 https://bioconductor.org/packages/3.7/bioc/vignettes/AnnotationDbi/inst/doc/IntroToAnnotationPackages.pdf
 https://www.bioconductor.org/help/course-materials/2010/EMBL2010/GenomicRanges.pdf
+https://bioconductor.org/packages/3.7/bioc/vignettes/GenomicFeatures/inst/doc/GenomicFeatures.pdf
 https://genome.ucsc.edu/
 http://www.genecards.org/
 
