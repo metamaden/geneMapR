@@ -101,7 +101,7 @@ if(get.en.coor==T){
     gid.ens.df <- makeGRangesFromDataFrame(gid.ens.df,keep.extra.columns = T)
   }
   
-  listreturn <- c(listreturn,gid.ez.df); names(listreturn)[length(listreturn)] <- "en.gr"
+  listreturn <- c(listreturn,gid.ens.df); names(listreturn)[length(listreturn)] <- "en.gr"
 }
 
 if(show.module.versions==T){
