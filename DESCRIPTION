@@ -1,0 +1,17 @@
+Package: geneMapR
+Type: Package
+Title: Get Gene Info from R/Bioc
+Version: 0.1.0
+Author: SM
+Maintainer: sean m <smaden@fredhutch.org>
+Description: Conveiently access gene info programmatically in R using Bioc packages.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports:
+    GenomicRanges
+    GenomicFeatures
+Suggests:
+    org.Hs.eg.db
+    TxDb.Hsapiens.UCSC.hg19.knownGene
+    EnsDb.Hsapiens.v75
