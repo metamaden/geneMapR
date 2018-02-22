@@ -9,9 +9,9 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 Imports:
-    GenomicRanges
-    GenomicFeatures
+    GenomicRanges (1.28.6)
+    GenomicFeatures (1.28.5)
 Suggests:
-    org.Hs.eg.db
-    TxDb.Hsapiens.UCSC.hg19.knownGene
-    EnsDb.Hsapiens.v75
+    org.Hs.eg.db (3.4.1)
+    TxDb.Hsapiens.UCSC.hg19.knownGene (3.2.2)
+    EnsDb.Hsapiens.v75 (2.1.0)
