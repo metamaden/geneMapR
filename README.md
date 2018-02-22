@@ -173,6 +173,8 @@ transcripts(edb) # returns large Granges object
 ```
 
 # Citations (package list)
+GenomicFeatures
+GenomicRanges
 org.Hs.eg.db  
 BSgenome.Hsapiens.UCSC.hg19  
 TxDb.Hsapiens.UCSC.hg19.knownGene  
