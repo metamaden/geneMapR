@@ -1,6 +1,9 @@
 # geneMapR
 Repo containing info and workhorse scripts to aid gene ID mapping and coordinate retrieval.
 
+Downloadable using the following in R:   
+`require(devtools);   install_github("metamaden/methyPre")`
+
 # Mapping a Gene
 Sequence -> Codon -> Transcript -> Isoform -> Isoform Cluster -> Gene Coordinate Range
 
